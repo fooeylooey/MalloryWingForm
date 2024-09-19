@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Wing Place</title>
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore-compat.js"></script>
+
+    <!-- Google Maps JavaScript API with Places Library (Replace YOUR_API_KEY with your actual API key) -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_qP-UX2VfARdSL2G5xt7G58r_VhNFxgc&libraries=places"></script>
+
+    <script src="scripts/add_place.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Add a New Wing Place</h1>
+    </header>
+
+    <section id="add-new-place-link">
+        <button id="addPlaceButton" onclick="window.location.href='index.html'">Home</button>
+    </section>
+
+    <section id="auth-section">
+        <button id="signInButton">Sign In</button>
+        <button id="signOutButton" style="display:none;">Sign Out</button>
+        <p id="userStatus">Not signed in</p>
+    </section>
+
+    <!-- Form for Adding a New Wing Place -->
+    <section id="add-place-form" style="display:none;">
+        <h2>Enter Wing Place Details</h2>
+        <form id="newPlaceForm">
+            <label for="place-name">Wing Place Name:</label>
+            <input type="text" id="place-name" name="place-name" required>
+
+            <label for="place-location">Location:</label>
+            <input type="text" id="place-location" name="place-location" required>
+
+            <button type="submit">Add Wing Place</button>
+        </form>
+    </section>
+</body>
+</html>

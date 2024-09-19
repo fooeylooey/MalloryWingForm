@@ -1,71 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mallory Wing Form</title>
-        <link rel="stylesheet" href="styles/styles.css">
-    
-        <!-- Firebase App (the compat version of the core Firebase SDK) -->
-        <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics-compat.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore-compat.js"></script>
-    
-        <!-- Add Chart.js from CDN -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-        <script>
-            // Your web app's Firebase configuration
-            const firebaseConfig = {
-              apiKey: "AIzaSyCSG_1rEWxmQnqQzwgpyqYi8NM-aWQ-Ik4",
-              authDomain: "mallorywingform.firebaseapp.com",
-              projectId: "mallorywingform",
-              storageBucket: "mallorywingform.appspot.com",
-              messagingSenderId: "109860416825",
-              appId: "1:109860416825:web:f8831a534cb19dca088ce8",
-              measurementId: "G-EL727G8DNM"
-            };
-    
-            // Initialize Firebase
-            const app = firebase.initializeApp(firebaseConfig);
-            const analytics = firebase.analytics();
-            const db = firebase.firestore();
-        </script>
-    </head>    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mallory Wing Form</title>
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.19.1/firebase-firestore-compat.js"></script>
+
+    <!-- Main script -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="scripts/scripts.js" defer></script>
+</head>
 <body>
+    <!-- Header section -->
     <header>
         <h1>Mallory Wing Form</h1>
     </header>
 
-    <main>
-        <!-- Brief Explanation -->
-        <section id="explanation">
-            <h2>How It Works</h2>
-            <p>
-                Welcome to the Mallory Wing Form! Here you can discover the top-rated wing spots in Albuquerque. 
-                Submit your favorite wing place using the form below and see the top 5 wing places in a live chart.
-            </p>
-        </section>
+    <!-- Link to add a new wing place -->
+    <section id="add-new-place-link">
+        <button id="addPlaceButton" onclick="window.location.href='add_place.html'">Add a New Wing Place</button>
+    </section>
 
-        <!-- Top 5 Wing Places - Horizontal Bar Graph -->
-        <section id="top-places">
-            <h2>Top 5 Wing Places</h2>
-            <canvas id="wing-chart" width="400" height="200"></canvas>
-        </section>
+    <!-- Authentication buttons -->
+    <section id="auth-section">
+        <button id="signInButton">Sign In</button>
+        <button id="signOutButton" style="display:none;">Sign Out</button>
+        <p id="userStatus">Not signed in</p>
+    </section>
 
-        <!-- Submission Form -->
-        <section id="submit-form">
-            <h2>Submit Your Favorite Wing Place</h2>
-            <form id="wingForm">
-                <label for="place-name">Wing Place Name:</label>
-                <input type="text" id="place-name" name="place-name" required>
-                <label for="place-rating">Rating (1-5):</label>
-                <input type="number" id="place-rating" name="place-rating" min="1" max="5" required>
-                <button type="submit">Submit</button>
-            </form>
-        </section>
-    </main>
+    <section id="how-it-works"></section>
+        <h2>How It Works</h2>
+        <p>
+            Welcome to the Mallory Wing Form! Here you can discover the top-rated wing spots in Albuquerque. Sign in to
+            submit your favorite wing place using the form below and see the top 5 wing places in the live chart.
+        </p>
+    </section>
 
-    <script src="scripts/scripts.js"></script>
+    <!-- Section to display top 5 wing places and ratings -->
+    <section id="top-places">
+        <h2>Top 5 Wing Places</h2>
+        <canvas id="wing-chart" width="400" height="200"></canvas>
+    </section>
+
+    <!-- Submission form to rate wing places -->
+    <section id="submit-form" style="display:none;">
+        <h2>Rate Your Favorite Wing Place</h2>
+        <form id="wingForm">
+            <label for="place-name">Select Wing Place:</label>
+            <select id="place-name" name="place-name" required>
+                <!-- Dynamic wing places will be added here -->
+            </select>
+
+            <label for="place-rating">Your Rating (1-5):</label>
+            <input type="number" id="place-rating" name="place-rating" min="1" max="5" required>
+
+            <button type="submit">Submit Rating</button>
+        </form>
+    </section>
 </body>
 </html>
